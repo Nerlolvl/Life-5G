@@ -1,0 +1,8 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+runs/
+
+# Standalone build (.github/scripts/build-standalone.py)
+build/

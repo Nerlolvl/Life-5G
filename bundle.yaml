@@ -1,0 +1,30 @@
+# CarrierSIM — привязка SIM к системному пакету оператора iOS.
+# Адаптация под life:) Беларусь (MCC 257, MNC 04) с расчётом на 5G.
+# Формат: «default: ИмяПакета» или «MCCMNC: ИмяПакета» (MCCMNC без пробела,
+# например 257 04 = life:) BY). Комментарии начинаются с #.
+#
+# Важно для 5G: родной пакет Беларуси (life_by) скрывает переключатель 5G
+# (sw5g: false) и отключает EVS — поэтому белорусским SIM ставится пакет
+# Turkcell_lifecell_ua («Life», lifecell Украина): 5G, EVS и переключатель
+# VoLTE включены. Разрешённые частоты 5G задаёт подписанный файл GRI
+# в Default.bundle самой iOS — скрипт (и любой пакет) его не меняет.
+
+default: Vodafone_hu
+
+### Беларусь: 5G, EVS и VoLTE через пакет «Life» (lifecell ua)
+# A1 BY
+25701: Turkcell_lifecell_ua
+# второй оператор BY
+25702: Turkcell_lifecell_ua
+# Life BY — основной вариант для 5G
+25704: Turkcell_lifecell_ua
+# Beltelecom
+25705: Turkcell_lifecell_ua
+# BeCloud / UNET
+25706: Turkcell_lifecell_ua
+
+### Альтернативы для life:) (25704): раскомментируйте ОДНУ строку
+### (повтор 25704 запрещён). Свойства пакетов: https://ios-bundles.github.io
+# 25704: Vodafone_hu  # 5G+«Авто 5G»+EVS+XCAP+VoWiFi (приоритет IMS), VoLTE всегда вкл, значок 4G
+# 25704: O2_Germany   # 5G SA+VoNR+EVS+XCAP+VoWiFi дом/роуминг, VoLTE всегда вкл, значок LTE
+# 25704: Orange_pl    # 5G+«Авто 5G»+EVS+XCAP+VoWiFi (дом), VoLTE всегда вкл, значок LTE
