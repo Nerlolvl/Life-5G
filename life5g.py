@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-"""Life:) BY 5G: ставит первый пакет из списка, который подтвердит iOS этой версии.
+"""Life:) BY 5G: ставит единственный рабочий пакет «Life» (Turkcell_lifecell_ua).
 
 Работает одинаково с физической SIM и с eSIM: привязка идёт по IMSI, слот и тип
 SIM не важны. По умолчанию обрабатываются все SIM операторов России и Беларуси
 (--sims all); зарубежная SIM без своей строки в bundle.yaml не трогается.
 
 Если пакета нет в этой версии iOS, carrier.py сам откатывает настройки
-(код выхода 3 и строка «Прежние настройки возвращены») — тогда берётся следующий
-пакет из списка. Иное «не подтверждено» останавливает перебор: ссылка могла уже
-заработать, и заменять её вслепую нельзя.
+(код выхода 3 и строка «Прежние настройки возвращены») — установка завершается
+без изменений на телефоне.
 """
 from __future__ import annotations
 import os
@@ -18,12 +17,10 @@ import sys
 
 import launch
 
-# Порядок попыток: первый подтверждённый iOS пакет остаётся. Правьте под себя,
-# имена — как папки в /System/Library/Carrier Bundles/iPhone на телефоне.
-# Свойства пакетов: https://ios-bundles.github.io (см. также README.md).
-# Turkcell_lifecell_ua — «Life» (lifecell ua): 5G + EVS + VoLTE-переключатель.
-# Vodafone_hu — самый обкатанный пакет сообщества (Авто 5G, XCAP, VoWiFi).
-BUNDLES = ('Turkcell_lifecell_ua', 'Vodafone_hu', 'O2_Germany')
+# Единственный пакет проекта: «Life» (lifecell ua) — 5G + EVS + VoLTE-переключатель.
+# Имя — как папка в /System/Library/Carrier Bundles/iPhone на телефоне.
+# Каталог всех пакетов iOS: https://ios-bundles.github.io (см. также README.md).
+BUNDLES = ('Turkcell_lifecell_ua',)
 
 ROLLED_BACK = 'Прежние настройки возвращены'
 UNCONFIRMED_KEEP = 'Каталог записан, но журнал не подтвердил выбор'
