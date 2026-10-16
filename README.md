@@ -1,4 +1,4 @@
-# Life 5G · life:) Беларусь на iPhone
+# Life 5G · Беларусь на iPhone
 
 Включает **5G**, **VoLTE + EVS (HD Voice+)** и **звонки по Wi-Fi** на iPhone с SIM/eSIM **life:) (Беларусь, 257-04)**.
 
